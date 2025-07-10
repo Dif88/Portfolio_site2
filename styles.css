@@ -1,4 +1,4 @@
-/* Scrollbar */
+/* ========== Scrollbar ========== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -10,20 +10,37 @@
   border-radius: 10px;
 }
 
-/* Smooth scroll */
+/* ========== Smooth scroll ========== */
 html {
   scroll-behavior: smooth;
 }
 
-/* Dark mode inputs */
+/* ========== Dark Mode Inputs ========== */
 .dark input,
 .dark textarea {
   background-color: #2d2d2d;
   color: white;
   border-color: #444;
 }
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #aaa;
+}
 
-/* Animated Gradient Background */
+/* ========== Light Mode Inputs ========== */
+input[type="email"],
+input[type="text"],
+textarea {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #555;
+}
+
+/* ========== Animated Gradient Background ========== */
 .bg-animated {
   background: linear-gradient(-45deg, #1f1c2c, #928dab, #1f1c2c, #2c5364);
   background-size: 400% 400%;
@@ -35,7 +52,7 @@ html {
   100% { background-position: 0% 50%; }
 }
 
-/* Neon Button */
+/* ========== Neon Button ========== */
 .neon-btn {
   background: none;
   color: #f2f3ae;
@@ -59,17 +76,11 @@ html {
   animation: pulseGlow 2s infinite;
 }
 @keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.05);
-  }
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.05); }
 }
 
-/* Glassmorphism Card */
+/* ========== Glassmorphism Card ========== */
 .card-glass {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -84,7 +95,7 @@ html {
   box-shadow: 0 6px 40px rgba(255, 255, 255, 0.2);
 }
 
-/* Fade animation */
+/* ========== Fade Animation ========== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -93,7 +104,7 @@ html {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Glowing cursor */
+/* ========== Glowing Cursor ========== */
 .cursor-dot {
   width: 8px;
   height: 8px;
@@ -107,7 +118,7 @@ html {
   transition: transform 0.05s ease;
 }
 
-/* Contact form styling */
+/* ========== Contact Form ========== */
 .form-glass {
   background: rgba(0, 0, 0, 0.4);
   padding: 2rem;
@@ -116,32 +127,16 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
-/* Default (light mode) styles */
-input[type="email"],
-input[type="text"],
-textarea {
-  color: #000; /* Black text */
-  background-color: #fff; /* White background */
-  border: 1px solid #ccc;
+/* ========== Base Body Styling ========== */
+body {
+  background-color: #0f0f0f;
+  color: #f2f3ae;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: #555; /* Light gray placeholders */
+/* ========== Light Mode Readability Fix ========== */
+.bg-animated:not(.dark) {
+  color: #000;
 }
-
-/* Dark mode overrides */
-.dark input[type="email"],
-.dark input[type="text"],
-.dark textarea {
-  color: #fff;
-  background-color: #1f2937; /* Tailwind's dark gray (gray-800) */
-  border-color: #444;
-}
-
-.dark input::placeholder,
-.dark textarea::placeholder {
-  color: #aaa;
-}
-
