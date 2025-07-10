@@ -116,3 +116,25 @@ const form = document.querySelector("form");
     });
   });
 
+
+// Theme toggle with persistence
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("themeToggle");
+  const html = document.documentElement;
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    html.classList.remove("dark");
+  } else {
+    html.classList.add("dark");
+  }
+
+  // Toggle theme on click
+  themeToggle.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+  });
+});
+
+
