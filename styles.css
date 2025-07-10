@@ -140,3 +140,23 @@ body {
 .bg-animated:not(.dark) {
   color: #000;
 }
+/* Light mode override for card-glass content */
+.card-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: black; /* Make text black in light mode */
+}
+
+.dark .card-glass {
+  color: white; /* Keep text white in dark mode */
+}
+.card-glass:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 40px rgba(255, 255, 255, 0.2);
+}
+
