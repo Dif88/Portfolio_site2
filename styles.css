@@ -1,0 +1,147 @@
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d58936;
+  border-radius: 10px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Dark mode inputs */
+.dark input,
+.dark textarea {
+  background-color: #2d2d2d;
+  color: white;
+  border-color: #444;
+}
+
+/* Animated Gradient Background */
+.bg-animated {
+  background: linear-gradient(-45deg, #1f1c2c, #928dab, #1f1c2c, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neon Button */
+.neon-btn {
+  background: none;
+  color: #f2f3ae;
+  border: 2px solid #d58936;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-weight: bold;
+  position: relative;
+  transition: 0.3s;
+}
+.neon-btn::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid #f2f3ae;
+  opacity: 0;
+  border-radius: 35px;
+  animation: pulseGlow 2s infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+/* Glassmorphism Card */
+.card-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-glass:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Glowing cursor */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #f2f3ae;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease;
+}
+
+/* Contact form styling */
+.form-glass {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* Default (light mode) styles */
+input[type="email"],
+input[type="text"],
+textarea {
+  color: #000; /* Black text */
+  background-color: #fff; /* White background */
+  border: 1px solid #ccc;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #555; /* Light gray placeholders */
+}
+
+/* Dark mode overrides */
+.dark input[type="email"],
+.dark input[type="text"],
+.dark textarea {
+  color: #fff;
+  background-color: #1f2937; /* Tailwind's dark gray (gray-800) */
+  border-color: #444;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #aaa;
+}
+

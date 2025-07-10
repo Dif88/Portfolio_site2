@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AES Message Vault</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    textarea, input[type="password"], button, select {
+      width: 90%;
+      max-width: 480px;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    button {
+      background-color: #d58936;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+    button:hover {
+      background-color: #b2762e;
+    }
+    .result {
+      margin-top: 1.5rem;
+      background: #333;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 480px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: left;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 AES Message Vault</h1>
+  <label for="message">Message:</label>
+  <textarea id="message" placeholder="Enter your message here"></textarea>
+  
+  <label for="passphrase">Passphrase:</label>
+  <input type="password" id="passphrase" placeholder="Enter secret passphrase" />
+  
+  <label for="action">Action:</label>
+  <select id="action">
+    <option value="encrypt">Encrypt</option>
+    <option value="decrypt">Decrypt</option>
+  </select>
+  
+  <button onclick="processMessage()">Process</button>
+  
+  <div class="result" id="output">
+    <h3>Result:</h3>
+    <pre id="resultText"></pre>
+  </div>
+
+  <!-- CryptoJS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+  <script>
+    function processMessage() {
+      const message = document.getElementById('message').value;
+      const passphrase = document.getElementById('passphrase').value;
+      const action = document.getElementById('action').value;
+      const resultText = document.getElementById('resultText');
+
+      if (!message) {
+        resultText.textContent = 'Please enter a message.';
+        return;
+      }
+      if (!passphrase) {
+        resultText.textContent = 'Please enter a passphrase.';
+        return;
+      }
+
+      try {
+        if (action === 'encrypt') {
+          const encrypted = CryptoJS.AES.encrypt(message, passphrase).toString();
+          resultText.textContent = encrypted;
+        } else {
+          const decryptedBytes = CryptoJS.AES.decrypt(message, passphrase);
+          const decrypted = decryptedBytes.toString(CryptoJS.enc.Utf8);
+          if (!decrypted) throw new Error('Invalid passphrase or corrupted ciphertext');
+          resultText.textContent = decrypted;
+        }
+      } catch (err) {
+        resultText.textContent = 'Error: ' + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
