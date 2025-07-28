@@ -6,7 +6,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #d58936;
+  background-color: #3C1518; /* deep maroon */
   border-radius: 10px;
 }
 
@@ -20,7 +20,7 @@ html {
 .dark textarea {
   background-color: #2d2d2d;
   color: white;
-  border-color: #444;
+  border-color: #A44200; /* burnt orange */
 }
 .dark input::placeholder,
 .dark textarea::placeholder {
@@ -33,7 +33,7 @@ input[type="text"],
 textarea {
   color: #000;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #3C1518; /* deep maroon */
 }
 input::placeholder,
 textarea::placeholder {
@@ -42,7 +42,7 @@ textarea::placeholder {
 
 /* ========== Animated Gradient Background ========== */
 .bg-animated {
-  background: linear-gradient(-45deg, #1f1c2c, #928dab, #1f1c2c, #2c5364);
+  background: linear-gradient(-45deg, #3C1518, #69140E, #A44200, #D58936);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
 }
@@ -55,8 +55,8 @@ textarea::placeholder {
 /* ========== Neon Button ========== */
 .neon-btn {
   background: none;
-  color: #f2f3ae;
-  border: 2px solid #d58936;
+  color: #F2F3AE; /* soft cream */
+  border: 2px solid #3C1518; /* deep maroon */
   padding: 0.75rem 2rem;
   border-radius: 30px;
   font-weight: bold;
@@ -70,7 +70,7 @@ textarea::placeholder {
   left: -5px;
   right: -5px;
   bottom: -5px;
-  border: 2px solid #f2f3ae;
+  border: 2px solid #A44200; /* burnt orange */
   opacity: 0;
   border-radius: 35px;
   animation: pulseGlow 2s infinite;
@@ -108,7 +108,7 @@ textarea::placeholder {
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background: #f2f3ae;
+  background: #D58936; /* warm gold */
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -130,7 +130,7 @@ textarea::placeholder {
 /* ========== Base Body Styling ========== */
 body {
   background-color: #0f0f0f;
-  color: #f2f3ae;
+  color: #F2F3AE; /* soft cream */
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
@@ -140,23 +140,3 @@ body {
 .bg-animated:not(.dark) {
   color: #000;
 }
-/* Light mode override for card-glass content */
-.card-glass {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: black; /* Make text black in light mode */
-}
-
-.dark .card-glass {
-  color: white; /* Keep text white in dark mode */
-}
-.card-glass:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 40px rgba(255, 255, 255, 0.2);
-}
-
