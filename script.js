@@ -1,13 +1,13 @@
-// ===== Mobile menu toggle =====
+// Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 
 menuToggle.addEventListener('click', () => {
   mobileMenu.classList.toggle('hidden');
-  mobileMenu.classList.toggle('animate-fade-in');
+  mobileMenu.classList.toggle('fade-in');
 });
 
-// ===== Theme toggle =====
+// Theme toggle with persistence
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 
@@ -23,7 +23,7 @@ themeToggle.addEventListener('click', () => {
   }
 });
 
-// ===== Load saved theme =====
+// Load saved theme
 window.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
@@ -33,21 +33,23 @@ window.addEventListener('DOMContentLoaded', () => {
     html.classList.remove('dark');
     themeToggle.textContent = '🌙';
   }
-
   typeWriterEffect();
+  AOS.init({ duration: 900, once: true });
 });
 
-// ===== Glowing Cursor Effect =====
-const dot = document.querySelector('.cursor-dot');
+// Glowing cursor effect
+const dot = document.createElement('div');
+dot.classList.add('cursor-dot');
+document.body.appendChild(dot);
 document.addEventListener('mousemove', (e) => {
   dot.style.left = `${e.clientX}px`;
   dot.style.top = `${e.clientY}px`;
 });
 
-// ===== Typing Animation =====
+// Typing animation for home header
 function typeWriterEffect() {
   const nameElement = document.querySelector('#home h1');
-  const text = "Hi, I'm Idrissa";
+  const text = "Hi, I'm Idrissa Fofana";
   let i = 0;
   nameElement.textContent = '';
   const type = () => {
@@ -60,81 +62,53 @@ function typeWriterEffect() {
   type();
 }
 
-
-// =====formspree ====
+// Formspree submit with spinner and feedback
 const form = document.querySelector("form");
-  const spinner = document.getElementById("loadingSpinner");
+const spinner = document.getElementById("loadingSpinner");
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    spinner.classList.remove("hidden");
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  spinner.classList.remove("hidden");
 
-    const formData = new FormData(form);
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    if (response.ok) {
-      form.innerHTML = `
-        <div class="bg-green-100 text-green-800 p-6 rounded-lg text-center">
-          <h3 class="text-xl font-bold mb-2">Thanks for reaching out!</h3>
-          <p>I’ll get back to you soon — stay tuned!</p>
-        </div>
-      `;
-    } else {
-      form.innerHTML = `
-        <div class="bg-red-100 text-red-800 p-6 rounded-lg text-center">
-          <h3 class="text-xl font-bold mb-2">Oops, something went wrong.</h3>
-          <p>Please try again later or email me directly.</p>
-        </div>
-      `;
+  const formData = new FormData(form);
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
     }
-  
   });
 
-
-  //===== Filtering logic for the skills section =====
- 
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const skillTags = document.querySelectorAll(".skill-tag");
-
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const category = button.getAttribute("data-category");
-
-      skillTags.forEach(tag => {
-        if (category === "all" || tag.classList.contains(category)) {
-          tag.classList.remove("hidden");
-        } else {
-          tag.classList.add("hidden");
-        }
-      });
-    });
-  });
-
-
-// Theme toggle with persistence
-document.addEventListener("DOMContentLoaded", () => {
-  const themeToggle = document.getElementById("themeToggle");
-  const html = document.documentElement;
-
-  // Load saved theme
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    html.classList.remove("dark");
+  if (response.ok) {
+    form.innerHTML = `
+      <div class="bg-green-100 text-green-800 p-6 rounded-lg text-center">
+        <h3 class="text-xl font-bold mb-2">Thanks for reaching out!</h3>
+        <p>I’ll get back to you soon — stay tuned!</p>
+      </div>
+    `;
   } else {
-    html.classList.add("dark");
+    form.innerHTML = `
+      <div class="bg-red-100 text-red-800 p-6 rounded-lg text-center">
+        <h3 class="text-xl font-bold mb-2">Oops, something went wrong.</h3>
+        <p>Please try again later or email me directly.</p>
+      </div>
+    `;
   }
-
-  // Toggle theme on click
-  themeToggle.addEventListener("click", () => {
-    html.classList.toggle("dark");
-    localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
-  });
 });
 
+// Skills filtering
+const filterButtons = document.querySelectorAll(".filter-btn");
+const skillTags = document.querySelectorAll(".skill-tag");
 
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const category = button.getAttribute("data-category");
+    skillTags.forEach(tag => {
+      if (category === "all" || tag.classList.contains(category)) {
+        tag.classList.remove("hidden");
+      } else {
+        tag.classList.add("hidden");
+      }
+    });
+  });
+});
