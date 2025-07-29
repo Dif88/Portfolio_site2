@@ -91,12 +91,12 @@ textarea::placeholder {
 header {
   background: white;
 }
-header. dark {
+header.dark {
   background: #111;
 }
 
 /* Link hover */
-a :hover {
+a:hover {
   color: #A44200;
   text-decoration: underline;
 }
