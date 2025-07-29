@@ -1,4 +1,4 @@
-/* ========== Scrollbar ========== */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -10,12 +10,12 @@
   border-radius: 10px;
 }
 
-/* ========== Smooth scroll ========== */
+/* Smooth Scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* ========== Dark Mode Inputs ========== */
+/* Dark Mode Inputs */
 .dark input,
 .dark textarea {
   background-color: #2d2d2d;
@@ -27,7 +27,7 @@ html {
   color: #aaa;
 }
 
-/* ========== Light Mode Inputs ========== */
+/* Light Mode Inputs */
 input[type="email"],
 input[type="text"],
 textarea {
@@ -40,47 +40,7 @@ textarea::placeholder {
   color: #555;
 }
 
-/* ========== Animated Gradient Background ========== */
-.bg-animated {
-  background: linear-gradient(-45deg, #3C1518, #69140E, #A44200, #D58936);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ========== Neon Button ========== */
-.neon-btn {
-  background: none;
-  color: #F2F3AE; /* soft cream */
-  border: 2px solid #3C1518; /* deep maroon */
-  padding: 0.75rem 2rem;
-  border-radius: 30px;
-  font-weight: bold;
-  position: relative;
-  transition: 0.3s;
-}
-.neon-btn::after {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border: 2px solid #A44200; /* burnt orange */
-  opacity: 0;
-  border-radius: 35px;
-  animation: pulseGlow 2s infinite;
-}
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.05); }
-}
-
-/* ========== Glassmorphism Card ========== */
+/* Glassmorphism Card */
 .card-glass {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -95,16 +55,25 @@ textarea::placeholder {
   box-shadow: 0 6px 40px rgba(255, 255, 255, 0.2);
 }
 
-/* ========== Fade Animation ========== */
+/* Fade In Animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
 }
 
-/* ========== Glowing Cursor ========== */
+/* Contact Form Glass */
+.form-glass {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Cursor dot styling */
 .cursor-dot {
   width: 8px;
   height: 8px;
@@ -118,25 +87,25 @@ textarea::placeholder {
   transition: transform 0.05s ease;
 }
 
-/* ========== Contact Form ========== */
-.form-glass {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Header */
+header {
+  background: white;
+}
+header. dark {
+  background: #111;
 }
 
-/* ========== Base Body Styling ========== */
+/* Link hover */
+a :hover {
+  color: #A44200;
+  text-decoration: underline;
+}
+
+/* Body base */
 body {
   background-color: #0f0f0f;
   color: #F2F3AE; /* soft cream */
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-}
-
-/* ========== Light Mode Readability Fix ========== */
-.bg-animated:not(.dark) {
-  color: #000;
 }
