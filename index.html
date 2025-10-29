@@ -3,167 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idrissa | Cybersecurity & UI/UX Developer</title>
+  <title>Idrissa Fofana | Cybersecurity Developer & UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Idrissa Fofana — Cybersecurity-focused developer and UI/UX designer. Secure, human-centered web apps and tools." />
+  <meta name="keywords" content="Idrissa Fofana, cybersecurity developer, UI/UX, web developer, portfolio, TryHackMe, PTJPT" />
+  <meta property="og:title" content="Idrissa Fofana — Cybersecurity & UI/UX" />
+  <meta property="og:description" content="Secure, human-centered web experiences and security tools." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/site.png" />
+  <meta name="theme-color" content="#0f0f0f" />
+
   <link rel="stylesheet" href="styles.css" />
-
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS Animation CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0f0f0f;
-      color: #F2F3AE; /* soft cream */
-      margin: 0; padding: 0;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: #3C1518; /* deep maroon */
-      border-radius: 10px;
-    }
-
-    /* Smooth Scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Dark Mode Inputs */
-    .dark input,
-    .dark textarea {
-      background-color: #2d2d2d;
-      color: white;
-      border-color: #A44200; /* burnt orange */
-    }
-    .dark input::placeholder,
-    .dark textarea::placeholder {
-      color: #aaa;
-    }
-
-    /* Light Mode Inputs */
-    input[type="email"],
-    input[type="text"],
-    textarea {
-      color: #000;
-      background-color: #fff;
-      border: 1px solid #3C1518; /* deep maroon */
-    }
-    input::placeholder,
-    textarea::placeholder {
-      color: #555;
-    }
-
-    /* Glassmorphism Card */
-    .card-glass {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-      border-radius: 15px;
-      padding: 1.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card-glass:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 40px rgba(255, 255, 255, 0.2);
-    }
-
-    /* Fade In Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in {
-      animation: fadeIn 0.8s ease forwards;
-    }
-
-    /* Contact Form Glass */
-    .form-glass {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 2rem;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Header */
-    header {
-      background: white;
-    }
-    header.dark {
-      background: #111;
-    }
-
-    /* Link hover */
-    a:hover {
-      color: #A44200;
-      text-decoration: underline;
-    }
-  </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-[#F2F3AE] transition duration-300">
-  <!-- Matrix-style Background Animation -->
-<canvas id="matrixBackground" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
-<script>
-  const canvas = document.getElementById('matrixBackground');
-  const ctx = canvas.getContext('2d');
+  <!-- Animated Background -->
+  <canvas id="bgCanvas" class="background-canvas"></canvas>
 
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
-
-  const chars = 'アァイィウヴエェオカガキギクグケゲコゴサザシジスズセソタダチッヂヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤユヨラリルレロワヲン0123456789';
-  const fontSize = 14;
-  const columns = canvas.width / fontSize;
-  const drops = Array.from({ length: columns }).fill(1);
-
-  function drawMatrix() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#00ff66';
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-      const text = chars[Math.floor(Math.random() * chars.length)];
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-      if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-  }
-
-  setInterval(drawMatrix, 35);
-  window.addEventListener('resize', () => {
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-  });
-</script>
-
-
-  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur shadow-md">
     <nav class="container mx-auto px-4 flex justify-between items-center py-4">
       <div class="text-2xl font-bold text-[#3C1518] dark:text-[#F2F3AE]">Idrissa Fofana</div>
       <ul id="navLinks" class="hidden md:flex space-x-6 font-medium">
         <li><a href="#home" class="hover:underline hover:text-[#69140E]">Home</a></li>
         <li><a href="#about" class="hover:underline hover:text-[#69140E]">About</a></li>
         <li><a href="#projects" class="hover:underline hover:text-[#69140E]">Projects</a></li>
+        <li><a href="#experience" class="hover:underline hover:text-[#69140E]">Experience</a></li>
         <li><a href="#skills" class="hover:underline hover:text-[#69140E]">Skills</a></li>
         <li><a href="#contact" class="hover:underline hover:text-[#69140E]">Contact</a></li>
       </ul>
       <div class="flex items-center space-x-4">
+        <a href="resume.pdf" class="btn-ghost hidden sm:inline" download>Download Resume</a>
         <button id="themeToggle" class="text-2xl" aria-label="Toggle Dark Mode">🌙</button>
         <div id="menuToggle" class="md:hidden text-2xl cursor-pointer" aria-label="Toggle Menu">☰</div>
       </div>
@@ -172,145 +42,163 @@
       <li><a href="#home" class="hover:text-[#69140E]">Home</a></li>
       <li><a href="#about" class="hover:text-[#69140E]">About</a></li>
       <li><a href="#projects" class="hover:text-[#69140E]">Projects</a></li>
+      <li><a href="#experience" class="hover:text-[#69140E]">Experience</a></li>
       <li><a href="#skills" class="hover:text-[#69140E]">Skills</a></li>
       <li><a href="#contact" class="hover:text-[#69140E]">Contact</a></li>
+      <li><a href="resume.pdf" class="btn-ghost">Download Resume</a></li>
     </ul>
   </header>
 
-  <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-4 py-20" data-aos="fade-up">
+  <section id="home" class="min-h-[80vh] flex flex-col justify-center items-center text-center px-4 py-20" data-aos="fade-up">
     <h1 class="text-4xl sm:text-6xl font-extrabold text-[#3C1518] dark:text-[#F2F3AE] mb-4">Hi, I'm Idrissa Fofana</h1>
-    <p class="text-lg sm:text-2xl text-gray-700 dark:text-gray-300 mb-6">Cybersecurity Enthusiast & UI/UX-Focused Developer</p>
-    <a href="#projects" class="bg-[#A44200] text-white px-6 py-3 rounded-full hover:bg-[#D58936] transition">View My Work</a>
+    <p class="text-lg sm:text-2xl text-gray-700 dark:text-gray-300 mb-6">
+      Cybersecurity Developer | UI/UX Designer | Ethical Hacker in Training
+    </p>
+    <div class="flex gap-4">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="resume.pdf" class="btn-secondary" download>Download Resume</a>
+    </div>
   </section>
 
-  <section id="about" class="py-20 px-4 bg-gray-100 dark:bg-gray-800 text-center fade-in" data-aos="fade-right">
-    <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">About Me</h2>
-    <p class="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed">
-      I'm a passionate web developer and designer with a strong interest in cybersecurity. I specialize in building responsive, user-friendly websites using HTML, CSS, and JavaScript. As I continue to grow in tech, I'm also expanding my knowledge in cybersecurity, aiming to build secure and visually appealing web experiences.
+  <section id="about" class="py-20 px-4 bg-gray-100/60 dark:bg-gray-800/60 text-center" data-aos="fade-up">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-text">
+      I design and build secure, human-centered web experiences. I’m a developer with a strong interest in
+      cybersecurity — from encryption tools to network analysis labs — and I love turning complex problems into clean, usable interfaces.
     </p>
   </section>
 
-  <section id="projects" class="bg-gray-100 dark:bg-gray-800 py-20 px-4">
-    <div class="container mx-auto">
-      <h2 class="text-3xl sm:text-4xl font-bold text-center text-[#3C1518] dark:text-[#F2F3AE] mb-12">Projects & Labs</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+  <section id="projects" class="py-20 px-4">
+    <div class="container mx-auto space-y-12">
+      <h2 class="section-title text-center">Projects</h2>
+
+      <h3 class="text-xl font-bold text-[#D58936] mb-4">Web & UI/UX</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card-glass" data-aos="fade-up">
-          <img src="site.png" alt="Blog Site" class="rounded mb-4" />
+          <img src="site.png" alt="Blog Site" class="rounded mb-4 w-full h-44 object-cover" />
           <h3 class="text-2xl font-semibold mb-2">Blog Website</h3>
           <p>Responsive blog built with modern HTML & CSS.</p>
+          <div class="mt-3 flex gap-3">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
-        
-        <div class="card-glass" data-aos="fade-up" data-aos-delay="200">
-          <img src="show.png" alt="Freelancer Portfolio" class="rounded mb-4" />
+        <div class="card-glass" data-aos="fade-up" data-aos-delay="100">
+          <img src="show.png" alt="Freelancer Portfolio" class="rounded mb-4 w-full h-44 object-cover" />
           <h3 class="text-2xl font-semibold mb-2">Freelancer Portfolio</h3>
           <p>Showcasing work and branding in a clean layout.</p>
+          <div class="mt-3 flex gap-3">
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Live</a>
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
-        <div class="card-glass" data-aos="fade-up" data-aos-delay="300">
-          <img src="encrypt.png" alt="Freelancer Portfolio" class="rounded mb-4" />
-          <h3 class="text-2xl font-semibold mb-2">Message Encryptor</h3>
-          <p>Encrypt messages with Caesar cipher. <a href="projects/Encryptor.html" class="text-[#A44200] underline" target="_blank" rel="noopener noreferrer">Try it</a></p>
-        </div>
+      </div>
+
+      <h3 class="text-xl font-bold text-[#D58936] mt-10 mb-4">Cybersecurity Tools</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card-glass" data-aos="fade-up">
-          <img src="vault.png" alt="Freelancer Portfolio" class="rounded mb-4" />
+          <img src="encrypt.png" alt="Caesar Cipher" class="rounded mb-4 w-full h-44 object-cover" />
+          <h3 class="text-2xl font-semibold mb-2">Message Encryptor (Caesar)</h3>
+          <p>Encrypt/decrypt messages with a classic Caesar cipher.</p>
+          <div class="mt-3 flex gap-3">
+            <a class="btn-primary" href="projects/Encryptor.html" target="_blank" rel="noopener">Try it</a>
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <div class="card-glass" data-aos="fade-up" data-aos-delay="100">
+          <img src="vault.png" alt="AES Vault" class="rounded mb-4 w-full h-44 object-cover" />
           <h3 class="text-2xl font-semibold mb-2">AES Message Vault</h3>
-          <p>Secure AES-256 message encryption. <a href="projects/aes-vault.html" class="text-[#A44200] underline" target="_blank" rel="noopener noreferrer">Try it</a></p>
+          <p>Secure AES-256 message encryption in the browser.</p>
+          <div class="mt-3 flex gap-3">
+            <a class="btn-primary" href="projects/aes-vault.html" target="_blank" rel="noopener">Try it</a>
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
-        <div class="card-glass" data-aos="fade-up">
-          <img src="your-thm-badge-1.png" alt="THM Badge" class="w-20 h-20 mx-auto mb-4" />
-          <h3 class="text-2xl font-semibold mb-2">John the Ripper – THM Lab</h3>
-          <p>Cracked hashes with wordlists and rules. <a href="https://your-writeup-link.com" class="text-[#A44200] underline" target="_blank" rel="noopener noreferrer">Read Write-Up</a></p>
-        </div>
-        <div class="card-glass" data-aos="fade-up">
-          <img src="your-thm-badge-2.png" alt="THM Badge" class="w-20 h-20 mx-auto mb-4" />
-          <h3 class="text-2xl font-semibold mb-2">MAC Spoofing & ICMP – THM Lab</h3>
-          <p>Simulated attacks and network analysis. <a href="https://your-writeup-link.com" class="text-[#A44200] underline" target="_blank" rel="noopener noreferrer">View Details</a></p>
+        <div class="card-glass" data-aos="fade-up" data-aos-delay="150">
+  <img src="thm.png" alt="THM Labs" class="rounded mb-4 w-full h-44 object-cover" />
+  <h3 class="text-2xl font-semibold mb-2">THM Labs Write-ups</h3>
+  <p>Hands-on ethical hacking labs focused on password cracking, packet analysis, and MAC spoofing.</p>
+  <div class="mt-3 flex gap-3">
+    <a class="btn-primary" href="projects/thm-labs.html" target="_blank" rel="noopener">Read Write-up</a>
+  </div>
+</div>
+
+</div>
+
+            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Read</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section id="experience" class="py-20 px-4 bg-gray-100/60 dark:bg-gray-800/60 text-center">
+    <h2 class="section-title">Experience & Education</h2>
+    <div class="max-w-4xl mx-auto space-y-6">
+      <div class="card-glass">
+        <h3 class="text-xl font-semibold">Interactive Multimedia — The College of New Jersey</h3>
+        <p class="text-gray-300 mt-2">Focus: Cybersecurity, Web Development, UI/UX Design.</p>
+      </div>
+      <div class="card-glass">
+        <h3 class="text-xl font-semibold">Freelance Web Developer</h3>
+        <p class="text-gray-300 mt-2">Built responsive sites and interactive apps for small businesses.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="skills" class="container mx-auto py-16 px-4 text-center">
-  <h2 class="text-2xl sm:text-3xl font-bold mb-6">Skills</h2>
+    <h2 class="section-title">Skills</h2>
+    <div class="mb-6 flex flex-wrap justify-center gap-4">
+      <button class="filter-btn btn-chip" data-category="all">All</button>
+      <button class="filter-btn btn-chip" data-category="web">Web Dev</button>
+      <button class="filter-btn btn-chip" data-category="os">Operating Systems</button>
+      <button class="filter-btn btn-chip" data-category="tools">Cyber Tools</button>
+      <button class="filter-btn btn-chip" data-category="virtualization">Virtualization</button>
+    </div>
 
-  <div class="mb-6 flex flex-wrap justify-center gap-4">
-    <button class="filter-btn bg-[#3C1518] text-white px-4 py-2 rounded-full cursor-pointer" data-category="all">All</button>
-    <button class="filter-btn bg-[#69140E] text-white px-4 py-2 rounded-full cursor-pointer" data-category="web">Web Dev</button>
-    <button class="filter-btn bg-[#A44200] text-white px-4 py-2 rounded-full cursor-pointer" data-category="os">Operating Systems</button>
-    <button class="filter-btn bg-[#D58936] text-white px-4 py-2 rounded-full cursor-pointer" data-category="tools">Cyber Tools</button>
-    <button class="filter-btn bg-[#F2F3AE] text-black px-4 py-2 rounded-full cursor-pointer" data-category="virtualization">Virtualization</button>
-  </div>
+    <div id="skillsGrid" class="flex flex-wrap justify-center gap-4">
+      <span class="skill-tag web tag-dark">HTML</span>
+      <span class="skill-tag web tag-dark">CSS</span>
+      <span class="skill-tag web tag-dark">JavaScript</span>
+      <span class="skill-tag web tag-dark">Responsive Design</span>
+      <span class="skill-tag web tag-dark">UI/UX</span>
 
-  <div id="skillsGrid" class="flex flex-wrap justify-center gap-4">
-    <!-- Web Dev Skills -->
-    <span class="skill-tag web bg-[#3C1518] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#69140E] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 6v36l18 6 18-6V6H6Z"/></svg>
-      HTML
-    </span>
-    <span class="skill-tag web bg-[#3C1518] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#69140E] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 6v36h36V6H6Z" fill="#1572B6"/><path d="M15 35l3-18h15l-1 6H21v3h11l-1 6-5 2-5-2Z" fill="#33A9DC"/></svg>
-      CSS
-    </span>
-    <span class="skill-tag web bg-[#3C1518] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#69140E] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0C5.37 0 0 5.372 0 12c0 5.302 3.438 9.8 8.205 11.387.6.113.82-.263.82-.582 0-.287-.012-1.243-.018-2.44-3.338.726-4.042-1.61-4.042-1.61-.546-1.39-1.333-1.76-1.333-1.76-1.09-.745.083-.73.083-.73 1.204.085 1.837 1.236 1.837 1.236 1.07 1.835 2.81 1.305 3.495.997.108-.774.418-1.305.76-1.605-2.665-.3-5.466-1.334-5.466-5.93 0-1.31.47-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.007-.323 3.3 1.23.957-.266 1.983-.399 3.003-.405 1.02.006 2.047.14 3.006.405 2.288-1.553 3.292-1.23 3.292-1.23.655 1.653.243 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.102.823 2.222 0 1.606-.015 2.9-.015 3.293 0 .32.216.698.825.58C20.565 21.796 24 17.3 24 12c0-6.628-5.373-12-12-12Z"/></svg>
-      JavaScript
-    </span>
-    <span class="skill-tag web bg-[#3C1518] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#69140E] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l-8 4v10l8 4 8-4V7l-8-4zM7 8.5l5 2.5 5-2.5M7 15.5l5 2.5 5-2.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>
-      Responsive Design
-    </span>
-    <span class="skill-tag web bg-[#3C1518] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#69140E] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-      UI/UX
-    </span>
+      <span class="skill-tag os tag-warm">Linux (Kali, Ubuntu)</span>
+      <span class="skill-tag os tag-warm">Windows</span>
+      <span class="skill-tag os tag-warm">macOS</span>
 
-    <!-- Operating Systems -->
-    <span class="skill-tag os bg-[#A44200] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#D58936] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="4" fill="none"/><path d="M10 46v-4l12-12 6 6 16-16v-4" stroke="currentColor" stroke-width="3" fill="none"/></svg>
-      Linux (Kali, Ubuntu)
-    </span>
-    <span class="skill-tag os bg-[#A44200] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#D58936] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><rect width="512" height="512" rx="64" ry="64" fill="none" stroke="currentColor" stroke-width="30"/><path d="M32 256h448" stroke="currentColor" stroke-width="30"/></svg>
-      Windows
-    </span>
-    <span class="skill-tag os bg-[#A44200] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#D58936] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="3" fill="none"/><path d="M12 12l24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-      macOS
-    </span>
+      <span class="skill-tag virtualization tag-cream">VirtualBox</span>
+      <span class="skill-tag virtualization tag-cream">WSL</span>
 
-    <!-- Virtualization -->
-    <span class="skill-tag virtualization bg-[#F2F3AE] text-black px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#D58936] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect x="8" y="16" width="48" height="32" rx="4" ry="4" stroke="currentColor" stroke-width="3" fill="none"/><circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width="3" fill="none"/></svg>
-      VirtualBox
-    </span>
-    <span class="skill-tag virtualization bg-[#F2F3AE] text-black px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#D58936] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="10" y="12" width="28" height="24" rx="3" ry="3" stroke="currentColor" stroke-width="2" fill="none"/><path d="M20 30v-8l8 4-8 4z" fill="currentColor"/></svg>
-      WSL
-    </span>
+      <span class="skill-tag tools tag-gold">TryHackMe</span>
+      <span class="skill-tag tools tag-gold">John the Ripper</span>
+      <span class="skill-tag tools tag-gold">Wireshark</span>
+    </div>
+  </section>
 
-    <!-- Cyber Tools -->
-    <span class="skill-tag tools bg-[#D58936] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#A44200] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 12l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-      TryHackMe
-    </span>
-    <span class="skill-tag tools bg-[#D58936] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#A44200] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3h14l-7 18L5 3z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-      John the Ripper
-    </span>
-    <span class="skill-tag tools bg-[#D58936] text-white px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#A44200] transition">
-      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10h18M3 14h18" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-      Wireshark
-    </span>
-  </div>
-</section>
+  <section id="certs" class="py-20 px-4 text-center">
+    <h2 class="section-title">Certifications & Labs</h2>
+    <ul class="list-none text-gray-200 text-lg space-y-2 max-w-2xl mx-auto">
+      <li>• TryHackMe — Hash cracking (JtR), Wireshark traffic analysis, MAC spoofing labs</li>
+      <li>• Preparing: Practical Junior Penetration Tester (PTJPT)</li>
+    </ul>
+  </section>
 
+  <section id="why" class="py-20 px-4 bg-gray-900 text-center text-[#F2F3AE]">
+    <h2 class="section-title">Why Hire Me?</h2>
+    <p class="section-text max-w-3xl">
+      I combine cybersecurity fundamentals with UI/UX to deliver products that are both secure and delightful.
+      I’m hands-on, curious, and I document my process — so teams can move fast without breaking trust.
+    </p>
+  </section>
 
-  <section id="contact" class="bg-gray-100 dark:bg-gray-800 py-16 px-4 text-center fade-in" data-aos="fade-left">
-    <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Contact Me</h2>
+  <section id="contact" class="bg-gray-100/60 dark:bg-gray-800/60 py-16 px-4 text-center" data-aos="fade-left">
+    <h2 class="section-title">Contact Me</h2>
     <form action="https://formspree.io/f/xanjrqdb" method="POST" class="form-glass max-w-xl mx-auto space-y-4" id="contactForm" novalidate>
       <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded border" />
       <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-3 rounded border"></textarea>
       <input type="text" name="_gotcha" style="display:none" />
-      <button type="submit" class="bg-[#A44200] hover:bg-[#D58936] px-6 py-3 rounded text-white font-semibold transition">Send Message</button>
+      <button type="submit" class="btn-primary w-full">Send Message</button>
       <div id="loadingSpinner" class="hidden text-center mt-4">
         <svg class="animate-spin h-8 w-8 text-[#D58936] mx-auto" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" />
@@ -320,151 +208,16 @@
       </div>
     </form>
     <div class="mt-6 text-gray-700 dark:text-gray-300">
-      <p>Email: <a href="mailto:idrissafofana719@gmail.com" class="text-[#A44200] underline">idrissafofana719@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/idrissa-fofana-09a444293" target="_blank" class="text-[#A44200] underline" rel="noopener noreferrer">linkedin.com/in/idrissa-fofana-09a444293</a></p>
+      <p>Email: <a href="mailto:idrissafofana719@gmail.com" class="link">idrissafofana719@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/idrissa-fofana-09a444293" target="_blank" class="link" rel="noopener noreferrer">linkedin.com/in/idrissa-fofana-09a444293</a></p>
     </div>
   </section>
 
-  <footer class="text-center p-4 text-sm bg-white dark:bg-gray-900 text-gray-500">
+  <footer class="text-center p-4 text-sm bg-white/80 dark:bg-gray-900/80 text-gray-500">
     &copy; 2025 Idrissa Fof. All rights reserved.
   </footer>
 
-  <!-- AOS Animation JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script>
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('fade-in');
-    });
-
-    // Theme toggle with persistence
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-
-    themeToggle.addEventListener('click', () => {
-      if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-      } else {
-        html.classList.add('dark');
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-
-    // Load saved theme
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        html.classList.add('dark');
-        themeToggle.textContent = '☀️';
-      } else {
-        html.classList.remove('dark');
-        themeToggle.textContent = '🌙';
-      }
-      typeWriterEffect();
-      AOS.init({ duration: 900, once: true });
-    });
-
-    // Glowing cursor effect (optional, can be removed if preferred)
-    const dot = document.createElement('div');
-    dot.classList.add('cursor-dot');
-    document.body.appendChild(dot);
-    document.addEventListener('mousemove', (e) => {
-      dot.style.left = `${e.clientX}px`;
-      dot.style.top = `${e.clientY}px`;
-    });
-
-    // Typing animation for home header
-    function typeWriterEffect() {
-      const nameElement = document.querySelector('#home h1');
-      const text = "Hi, I'm Idrissa Fofana";
-      let i = 0;
-      nameElement.textContent = '';
-      const type = () => {
-        if (i < text.length) {
-          nameElement.textContent += text.charAt(i);
-          i++;
-          setTimeout(type, 100);
-        }
-      };
-      type();
-    }
-
-    // Formspree submit with spinner and feedback
-    const form = document.querySelector("form");
-    const spinner = document.getElementById("loadingSpinner");
-
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      spinner.classList.remove("hidden");
-
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        form.innerHTML = `
-          <div class="bg-green-100 text-green-800 p-6 rounded-lg text-center">
-            <h3 class="text-xl font-bold mb-2">Thanks for reaching out!</h3>
-            <p>I’ll get back to you soon — stay tuned!</p>
-          </div>
-        `;
-      } else {
-        form.innerHTML = `
-          <div class="bg-red-100 text-red-800 p-6 rounded-lg text-center">
-            <h3 class="text-xl font-bold mb-2">Oops, something went wrong.</h3>
-            <p>Please try again later or email me directly.</p>
-          </div>
-        `;
-      }
-    });
-
-    // Skills filtering
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const skillTags = document.querySelectorAll(".skill-tag");
-
-    filterButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const category = button.getAttribute("data-category");
-        skillTags.forEach(tag => {
-          if (category === "all" || tag.classList.contains(category)) {
-            tag.classList.remove("hidden");
-          } else {
-            tag.classList.add("hidden");
-          }
-        });
-      });
-    });
-  </script>
-
-  <style>
-    /* Cursor dot styling */
-    .cursor-dot {
-      width: 8px;
-      height: 8px;
-      background: #D58936; /* warm gold */
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 10000;
-      mix-blend-mode: difference;
-      transform: translate(-50%, -50%);
-      transition: transform 0.05s ease;
-    }
-  </style>
   <script src="script.js"></script>
-
 </body>
 </html>
