@@ -1,122 +1,158 @@
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #3C1518; /* deep maroon */
-  border-radius: 10px;
-}
-
-/* Smooth Scroll */
-html {
-  scroll-behavior: smooth;
+/* === Global Theme & Palette === */
+:root {
+  --maroon: #3C1518;
+  --brick: #69140E;
+  --burnt: #A44200;
+  --gold:  #D58936;
+  --cream: #F2F3AE;
+  --text-warm: #D8CBA5;
+  --bg-dark: #0f0f0f;
+  --bg-warm-dark: #1C1B17;
 }
 
-/* Dark Mode Inputs */
-.dark input,
-.dark textarea {
-  background-color: #2d2d2d;
-  color: white;
-  border-color: #A44200; /* burnt orange */
-}
-.dark input::placeholder,
-.dark textarea::placeholder {
-  color: #aaa;
-}
-
-/* Light Mode Inputs */
-input[type="email"],
-input[type="text"],
-textarea {
-  color: #000;
-  background-color: #fff;
-  border: 1px solid #3C1518; /* deep maroon */
-}
-input::placeholder,
-textarea::placeholder {
-  color: #555;
-}
-
-/* Glassmorphism Card */
-.card-glass {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-glass:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 40px rgba(255, 255, 255, 0.2);
-}
-
-/* Fade In Animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-in {
-  animation: fadeIn 0.8s ease forwards;
-}
-
-/* Contact Form Glass */
-.form-glass {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Cursor dot styling */
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: #D58936; /* warm gold */
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s ease;
-}
-
-/* Header */
-header {
-  background: white;
-}
-header.dark {
-  background: #111;
-}
-
-/* Link hover */
-a:hover {
-  color: #A44200;
-  text-decoration: underline;
-}
-
-/* Body base */
+/* === Base === */
+html { scroll-behavior: smooth; }
 body {
-  background-color: #0f0f0f;
-  color: #F2F3AE; /* soft cream */
-  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--cream);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  line-height: 1.7;
 }
 
-
-.background-animation {
+/* === Background Canvas === */
+.background-canvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Push behind everything else */
+  z-index: -1;
 }
 
+/* === Cards === */
+.card-glass {
+  background: rgba(164, 66, 0, 0.05); /* warm tint */
+  border: 1px solid rgba(213, 137, 54, 0.25); /* warm gold border */
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-radius: 16px;
+  padding: 1.25rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+  color: var(--cream);
+}
+.card-glass p { color: var(--text-warm); }
+.card-glass:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(164, 66, 0, 0.4);
+}
+
+/* === Buttons === */
+.btn-primary {
+  background: var(--burnt);
+  color: #fff;
+  padding: .8rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background: var(--gold);
+  box-shadow: 0 6px 20px rgba(213,137,54,.35);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  padding: .8rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, border .2s ease;
+  display: inline-block;
+}
+.btn-secondary:hover {
+  border-color: var(--burnt);
+  background: rgba(213,137,54,0.1);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--cream);
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  transition: all .2s ease;
+  display: inline-block;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--gold);
+}
+
+.btn-chip {
+  background: var(--maroon);
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.btn-chip:hover { background: var(--brick); }
+
+/* === Skill Tags === */
+.tag-dark   { background: var(--maroon); color: #fff; }
+.tag-warm   { background: var(--burnt); color: #fff; }
+.tag-cream  { background: var(--cream); color: #000; }
+.tag-gold   { background: var(--gold); color: #fff; }
+.skill-tag  { padding: .5rem 1rem; border-radius: 999px; font-weight: 500; }
+
+/* === Sections === */
+.section-title {
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.25rem);
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 6px rgba(164,66,0,0.4);
+}
+.section-text {
+  color: var(--text-warm);
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+/* === Forms === */
+.form-glass {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(213, 137, 54, 0.25);
+  color: var(--cream);
+}
+.form-glass input,
+.form-glass textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(213,137,54,0.3);
+  color: var(--cream);
+}
+.form-glass input::placeholder,
+.form-glass textarea::placeholder {
+  color: var(--text-warm);
+}
+
+/* === Links === */
+a, a:visited { color: var(--gold); text-decoration: underline; }
+a:hover { color: var(--burnt); text-decoration: underline; }
+
+/* === Scrollbar === */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb {
+  background: var(--burnt);
+  border-radius: 8px;
+}
+
+/* === Warm Section Backgrounds === */
+.bg-gray-100, .bg-gray-200 { background-color: var(--bg-warm-dark) !important; }
+.dark .bg-gray-800, .dark .bg-gray-900 { background-color: var(--bg-dark) !important; }
