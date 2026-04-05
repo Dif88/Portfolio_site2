@@ -1,232 +1,492 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Idrissa Fofana | Cybersecurity Developer & UI/UX Designer</title>
-  <meta name="description" content="Portfolio of Idrissa Fofana — Cybersecurity-focused developer and UI/UX designer. Secure, human-centered web apps and tools." />
-  <meta name="keywords" content="Idrissa Fofana, cybersecurity developer, UI/UX, web developer, portfolio, TryHackMe, PTJPT" />
-  <meta property="og:title" content="Idrissa Fofana — Cybersecurity & UI/UX" />
-  <meta property="og:description" content="Secure, human-centered web experiences and security tools." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/site.png" />
-  <meta name="theme-color" content="#0f0f0f" />
+  <title>Idrissa Fofana — Multimedia & Cybersecurity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    :root {
+      --white: #f2efe8;
+      --off: #e9e5dc;
+      --ink: #1a1814;
+      --ink-2: #4a4740;
+      --ink-3: #97948e;
+      --rule: #d8d4cb;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    .cursor {
+      width: 5px; height: 5px;
+      background: var(--ink);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      width: 28px; height: 28px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all 0.15s ease;
+      opacity: 0.25;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 5rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--rule); }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-3);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-avail {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.65rem;
+      color: var(--ink-3); letter-spacing: 0.05em;
+    }
+    .avail-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #22c55e;
+      animation: blink 2.5s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none;
+    }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); transition: all 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: var(--white); z-index: 200;
+      flex-direction: column; align-items: flex-start;
+      justify-content: center; padding: 5rem; gap: 1.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--serif); font-size: 3rem; color: var(--ink); text-decoration: none; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--ink-3); }
+    .mobile-close { position: absolute; top: 1.75rem; right: 2.5rem; font-size: 1.5rem; color: var(--ink-3); cursor: pointer; background: none; border: none; font-family: var(--mono); }
+
+    /* Hero */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 6rem;
+    }
+    .hero-left {
+      padding: 5rem;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+    .hero-label {
+      font-family: var(--mono); font-size: 0.65rem;
+      color: var(--ink-3); letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 2.5rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      line-height: 1.0; letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .hero-name em { font-style: italic; color: var(--ink-2); }
+    .hero-desc {
+      font-size: 1rem; line-height: 1.75;
+      color: var(--ink-2); max-width: 380px;
+      margin-bottom: 3rem; font-weight: 300;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-dark {
+      display: inline-block; padding: 0.8rem 2rem;
+      background: var(--ink); color: var(--white);
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.06em; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: var(--ink-2); }
+    .btn-outline {
+      display: inline-block; padding: 0.8rem 2rem;
+      border: 1px solid var(--rule); color: var(--ink-2);
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.06em; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--ink-2); color: var(--ink); }
+
+    .hero-right {
+      padding: 5rem 4rem;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      background: var(--off);
+    }
+    .hero-meta { display: flex; flex-direction: column; gap: 0; }
+    .hero-meta-item { padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
+    .hero-meta-item:first-child { border-top: 1px solid var(--rule); }
+    .hero-meta-label { font-family: var(--mono); font-size: 0.6rem; color: var(--ink-3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .hero-meta-value { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); line-height: 1.3; }
+
+    /* Sections */
+    section { padding: 7rem 5rem; }
+    .sec-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 4rem; border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem;
+    }
+    .sec-num { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-3); letter-spacing: 0.1em; }
+    .sec-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; line-height: 1.1; }
+
+    /* About */
+    #about { background: var(--off); display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+    .about-body p { font-size: 1rem; line-height: 1.85; color: var(--ink-2); margin-bottom: 1.2rem; }
+    .about-body strong { color: var(--ink); font-weight: 500; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 2rem; }
+    .stat-cell { background: var(--off); padding: 1.75rem 1.5rem; }
+    .stat-num { font-family: var(--serif); font-size: 2.2rem; line-height: 1; color: var(--ink); }
+    .stat-label { font-family: var(--mono); font-size: 0.6rem; color: var(--ink-3); letter-spacing: 0.1em; margin-top: 0.4rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { font-family: var(--mono); font-size: 0.62rem; color: var(--ink-2); padding: 0.3rem 0.75rem; border: 1px solid var(--rule); letter-spacing: 0.04em; }
+
+    /* Projects */
+    .project-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 1.1fr auto auto;
+      align-items: center; gap: 2rem;
+      padding: 1.75rem 0; border-bottom: 1px solid var(--rule);
+      cursor: pointer; text-decoration: none; color: inherit;
+    }
+    .project-row:first-child { border-top: 1px solid var(--rule); }
+    .project-row:hover .proj-arrow { transform: translate(4px,-4px); }
+    .project-row:hover .proj-title { text-decoration: underline; text-underline-offset: 4px; }
+    .proj-idx { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-3); letter-spacing: 0.08em; }
+    .proj-title { font-family: var(--serif); font-size: 1.25rem; letter-spacing: -0.01em; }
+    .proj-desc { font-size: 0.85rem; color: var(--ink-2); line-height: 1.6; }
+    .proj-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+    .proj-arrow { color: var(--ink-3); transition: transform 0.22s ease; font-size: 1rem; }
+
+    /* Skills */
+    #skills { background: var(--off); }
+    .skills-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .skills-group h3 { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+    .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
+    .skill-name { font-size: 0.95rem; color: var(--ink); font-weight: 400; }
+    .skill-dots { display: flex; gap: 4px; }
+    .df { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+    .de { width: 6px; height: 6px; border-radius: 50%; background: var(--rule); }
+
+    /* Contact */
+    #contact { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contact-blurb { font-size: 1rem; line-height: 1.8; color: var(--ink-2); margin-bottom: 2.5rem; }
+    .contact-link { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+    .contact-link:first-child { border-top: 1px solid var(--rule); }
+    .contact-link:hover { color: var(--ink-3); }
+    .contact-link span { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-3); }
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field label { font-family: var(--mono); font-size: 0.62rem; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; }
+    .form-field input, .form-field textarea { border: 1px solid var(--rule); background: var(--off); color: var(--ink); padding: 0.85rem 1rem; font-family: var(--sans); font-size: 0.9rem; font-weight: 300; outline: none; resize: none; transition: border-color 0.2s; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--ink); }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: var(--ink-3); }
+    .btn-submit { align-self: flex-start; padding: 0.9rem 2.5rem; background: var(--ink); color: var(--white); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.07em; border: none; cursor: pointer; transition: background 0.2s; }
+    .btn-submit:hover { background: var(--ink-2); }
+    #form-msg { font-family: var(--mono); font-size: 0.72rem; padding: 0.75rem 1rem; display: none; }
+    #form-msg.ok { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    #form-msg.err { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+    footer { border-top: 1px solid var(--rule); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-family: var(--mono); font-size: 0.62rem; color: var(--ink-3); letter-spacing: 0.06em; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
+      nav { padding: 1.5rem 1.5rem; }
+      .nav-links, .nav-avail { display: none; }
+      .hamburger { display: flex; }
+      #home { grid-template-columns: 1fr; }
+      .hero-left { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--rule); }
+      .hero-right { padding: 2.5rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      #about, #contact { grid-template-columns: 1fr; gap: 2.5rem; }
+      .skills-cols { grid-template-columns: 1fr; gap: 2rem; }
+      .project-row { grid-template-columns: 50px 1fr auto; }
+      .proj-desc, .proj-tags { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+  </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-[#F2F3AE] transition duration-300">
-  <!-- Animated Background -->
-  <canvas id="bgCanvas" class="background-canvas"></canvas>
+<body>
 
-  <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur shadow-md">
-    <nav class="container mx-auto px-4 flex justify-between items-center py-4">
-      <div class="text-2xl font-bold text-[#3C1518] dark:text-[#F2F3AE]">Idrissa Fofana</div>
-      <ul id="navLinks" class="hidden md:flex space-x-6 font-medium">
-        <li><a href="#home" class="hover:underline hover:text-[#69140E]">Home</a></li>
-        <li><a href="#about" class="hover:underline hover:text-[#69140E]">About</a></li>
-        <li><a href="#projects" class="hover:underline hover:text-[#69140E]">Projects</a></li>
-        <li><a href="#experience" class="hover:underline hover:text-[#69140E]">Experience</a></li>
-        <li><a href="#skills" class="hover:underline hover:text-[#69140E]">Skills</a></li>
-        <li><a href="#contact" class="hover:underline hover:text-[#69140E]">Contact</a></li>
-      </ul>
-      <div class="flex items-center space-x-4">
-        <a href="resume.pdf" class="btn-ghost hidden sm:inline" download>Download Resume</a>
-        <button id="themeToggle" class="text-2xl" aria-label="Toggle Dark Mode">🌙</button>
-        <div id="menuToggle" class="md:hidden text-2xl cursor-pointer" aria-label="Toggle Menu">☰</div>
-      </div>
-    </nav>
-    <ul id="mobileMenu" class="hidden flex-col items-center md:hidden space-y-4 p-6 bg-white dark:bg-gray-800">
-      <li><a href="#home" class="hover:text-[#69140E]">Home</a></li>
-      <li><a href="#about" class="hover:text-[#69140E]">About</a></li>
-      <li><a href="#projects" class="hover:text-[#69140E]">Projects</a></li>
-      <li><a href="#experience" class="hover:text-[#69140E]">Experience</a></li>
-      <li><a href="#skills" class="hover:text-[#69140E]">Skills</a></li>
-      <li><a href="#contact" class="hover:text-[#69140E]">Contact</a></li>
-      <li><a href="resume.pdf" class="btn-ghost">Download Resume</a></li>
-    </ul>
-  </header>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-  <section id="home" class="min-h-[80vh] flex flex-col justify-center items-center text-center px-4 py-20" data-aos="fade-up">
-    <h1 class="text-4xl sm:text-6xl font-extrabold text-[#3C1518] dark:text-[#F2F3AE] mb-4">Hi, I'm Idrissa Fofana</h1>
-    <p class="text-lg sm:text-2xl text-gray-700 dark:text-gray-300 mb-6">
-      Cybersecurity Developer | UI/UX Designer | Ethical Hacker in Training
-    </p>
-    <div class="flex gap-4">
-      <a href="#projects" class="btn-primary">View My Work</a>
-      <a href="resume.pdf" class="btn-secondary" download>Download Resume</a>
-    </div>
-  </section>
-
-  <section id="about" class="py-20 px-4 bg-gray-100/60 dark:bg-gray-800/60 text-center" data-aos="fade-up">
-    <h2 class="section-title">About Me</h2>
-    <p class="section-text">
-      I design and build secure, human-centered web experiences. I’m a developer with a strong interest in
-      cybersecurity — from encryption tools to network analysis labs — and I love turning complex problems into clean, usable interfaces.
-    </p>
-  </section>
-
-  <section id="projects" class="py-20 px-4">
-    <div class="container mx-auto space-y-12">
-      <h2 class="section-title text-center">Projects</h2>
-
-      <h3 class="text-xl font-bold text-[#D58936] mb-4">Web & UI/UX</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card-glass" data-aos="fade-up">
-          <img src="site.png" alt="Blog Site" class="rounded mb-4 w-full h-44 object-cover" />
-          <h3 class="text-2xl font-semibold mb-2">Blog Website</h3>
-          <p>Responsive blog built with modern HTML & CSS.</p>
-          <div class="mt-3 flex gap-3">
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-        <div class="card-glass" data-aos="fade-up" data-aos-delay="100">
-          <img src="show.png" alt="Freelancer Portfolio" class="rounded mb-4 w-full h-44 object-cover" />
-          <h3 class="text-2xl font-semibold mb-2">Freelancer Portfolio</h3>
-          <p>Showcasing work and branding in a clean layout.</p>
-          <div class="mt-3 flex gap-3">
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Live</a>
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="text-xl font-bold text-[#D58936] mt-10 mb-4">Cybersecurity Tools</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card-glass" data-aos="fade-up">
-          <img src="encrypt.png" alt="Caesar Cipher" class="rounded mb-4 w-full h-44 object-cover" />
-          <h3 class="text-2xl font-semibold mb-2">Message Encryptor (Caesar)</h3>
-          <p>Encrypt/decrypt messages with a classic Caesar cipher.</p>
-          <div class="mt-3 flex gap-3">
-            <a class="btn-primary" href="projects/Encryptor.html" target="_blank" rel="noopener">Try it</a>
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-        <div class="card-glass" data-aos="fade-up" data-aos-delay="100">
-          <img src="vault.png" alt="AES Vault" class="rounded mb-4 w-full h-44 object-cover" />
-          <h3 class="text-2xl font-semibold mb-2">AES Message Vault</h3>
-          <p>Secure AES-256 message encryption in the browser.</p>
-          <div class="mt-3 flex gap-3">
-            <a class="btn-primary" href="projects/aes-vault.html" target="_blank" rel="noopener">Try it</a>
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-        <div class="card-glass" data-aos=" fade-up data-aos-delay="100".
-          <img src="" alt=" Vantyron Conslting" class="round mb-4 w-full h-44 object-cover"/>
-          <h3 class="text-exl font-semibold mb-2"> Vantryron Consulting </h3>
-          <a class="btn-ghost" href="#" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-        
-          <p> </p>
-          <a class=" btn-primary" href=" " target="_blank" rel=noopener"> </a>
-        <div class="card-glass" data-aos="fade-up" data-aos-delay="150">
-  <img src="thm.png" alt="THM Labs" class="rounded mb-4 w-full h-44 object-cover" />
-  <h3 class="text-2xl font-semibold mb-2">THM Labs Write-ups</h3>
-  <p>Hands-on ethical hacking labs focused on password cracking, packet analysis, and MAC spoofing.</p>
-  <div class="mt-3 flex gap-3">
-    <a class="btn-primary" href="projects/thm-labs.html" target="_blank" rel="noopener">Read Write-up</a>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#projects" onclick="closeMenu()">Projects</a>
+    <a href="#skills" onclick="closeMenu()">Skills</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
-</div>
 
-</div>
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">Idrissa Fofana</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-avail"><span class="avail-dot"></span>Available for work</div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </nav>
 
-            <a class="btn-ghost" href="#" target="_blank" rel="noopener">Read</a>
-          </div>
+  <!-- Hero -->
+  <section id="home">
+    <div class="hero-left">
+      <p class="hero-label">Web Developer & Cybersecurity Analyst</p>
+      <h1 class="hero-name">Idrissa<br><em>Fofana.</em></h1>
+      <p class="hero-desc">Building at the intersection of visual craft and digital security. I design websites people love and systems that stay protected.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-dark">See My Work</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Based in</p>
+          <p class="hero-meta-value">West Africa</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Specialties</p>
+          <p class="hero-meta-value">Multimedia Design<br>Cybersecurity</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Currently</p>
+          <p class="hero-meta-value">Open to freelance<br>& full-time roles</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Active on</p>
+          <p class="hero-meta-value">TryHackMe</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="experience" class="py-20 px-4 bg-gray-100/60 dark:bg-gray-800/60 text-center">
-    <h2 class="section-title">Experience & Education</h2>
-    <div class="max-w-4xl mx-auto space-y-6">
-      <div class="card-glass">
-        <h3 class="text-xl font-semibold">Interactive Multimedia — The College of New Jersey</h3>
-        <p class="text-gray-300 mt-2">Focus: Cybersecurity, Web Development, UI/UX Design.</p>
+  <!-- About -->
+  <section id="about">
+    <div>
+      <div class="sec-header reveal">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">About</h2>
       </div>
-      <div class="card-glass">
-        <h3 class="text-xl font-semibold">Freelance Web Developer</h3>
-        <p class="text-gray-300 mt-2">Built responsive sites and interactive apps for small businesses.</p>
+      <div class="about-body reveal">
+        <p>I'm a <strong>web developer and aspiring cybersecurity professional</strong> building at the rare intersection of visual design and digital defense.</p>
+        <p>On the creative side, I craft <strong>responsive, sharp websites</strong> using HTML, CSS, and JavaScript with a focus on clean UI and real usability. On the security side, I'm actively deepening hands-on skills through <strong>TryHackMe labs</strong>, Wireshark, John the Ripper, and Kali Linux.</p>
+        <p>My belief: the best security professionals understand what they're protecting, and the best designers understand what could go wrong. I'm building both sides of that equation.</p>
+        <div style="margin-top:2rem;"><a href="/cdn-cgi/l/email-protection#5f363b2d362c2c3e3930393e313e686e661f38323e3633713c3032" class="btn-dark">Email me directly</a></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="stat-grid">
+        <div class="stat-cell"><div class="stat-num">3+</div><div class="stat-label">YEARS BUILDING</div></div>
+        <div class="stat-cell"><div class="stat-num">7+</div><div class="stat-label">PROJECTS</div></div>
+        <div class="stat-cell"><div class="stat-num">2</div><div class="stat-label">DISCIPLINES</div></div>
+        <div class="stat-cell"><div class="stat-num">THM</div><div class="stat-label">ACTIVE LABS</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        <span class="tag">Kali Linux</span><span class="tag">Wireshark</span>
+        <span class="tag">AES Encryption</span><span class="tag">UI / UX</span>
+        <span class="tag">VirtualBox</span><span class="tag">Responsive Design</span>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="container mx-auto py-16 px-4 text-center">
-    <h2 class="section-title">Skills</h2>
-    <div class="mb-6 flex flex-wrap justify-center gap-4">
-      <button class="filter-btn btn-chip" data-category="all">All</button>
-      <button class="filter-btn btn-chip" data-category="web">Web Dev</button>
-      <button class="filter-btn btn-chip" data-category="os">Operating Systems</button>
-      <button class="filter-btn btn-chip" data-category="tools">Cyber Tools</button>
-      <button class="filter-btn btn-chip" data-category="virtualization">Virtualization</button>
-    </div>
-
-    <div id="skillsGrid" class="flex flex-wrap justify-center gap-4">
-      <span class="skill-tag web tag-dark">HTML</span>
-      <span class="skill-tag web tag-dark">CSS</span>
-      <span class="skill-tag web tag-dark">JavaScript</span>
-      <span class="skill-tag web tag-dark">Responsive Design</span>
-      <span class="skill-tag web tag-dark">UI/UX</span>
-
-      <span class="skill-tag os tag-warm">Linux (Kali, Ubuntu)</span>
-      <span class="skill-tag os tag-warm">Windows</span>
-      <span class="skill-tag os tag-warm">macOS</span>
-
-      <span class="skill-tag virtualization tag-cream">VirtualBox</span>
-      <span class="skill-tag virtualization tag-cream">WSL</span>
-
-      <span class="skill-tag tools tag-gold">TryHackMe</span>
-      <span class="skill-tag tools tag-gold">John the Ripper</span>
-      <span class="skill-tag tools tag-gold">Wireshark</span>
-    </div>
+  <!-- Projects -->
+  <section id="projects">
+    <div class="sec-header reveal"><span class="sec-num">02</span><h2 class="sec-title">Selected Projects</h2></div>
+    <a class="project-row reveal" href="projects/Encryptor.html" target="_blank">
+      <span class="proj-idx">01</span>
+      <span class="proj-title">Message Encryptor</span>
+      <span class="proj-desc">Client-side Caesar cipher with modal UI. Encrypt and decrypt messages entirely in-browser.</span>
+      <div class="proj-tags"><span class="tag">Security</span><span class="tag">JS</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
+    <a class="project-row reveal" href="projects/aes-vault.html" target="_blank">
+      <span class="proj-idx">02</span>
+      <span class="proj-title">AES Message Vault</span>
+      <span class="proj-desc">AES-256 encryption via CryptoJS. Passphrase-locked messages, zero backend required.</span>
+      <div class="proj-tags"><span class="tag">Cryptography</span><span class="tag">Security</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
+    <a class="project-row reveal" href="#">
+      <span class="proj-idx">03</span>
+      <span class="proj-title">Blog Website</span>
+      <span class="proj-desc">Responsive editorial blog built with semantic HTML and modern CSS layout techniques.</span>
+      <div class="proj-tags"><span class="tag">Web</span><span class="tag">CSS</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
+    <a class="project-row reveal" href="#">
+      <span class="proj-idx">04</span>
+      <span class="proj-title">Music App Landing Page</span>
+      <span class="proj-desc">Sleek promotional site for a streaming app — motion design and visual storytelling.</span>
+      <div class="proj-tags"><span class="tag">Design</span><span class="tag">Branding</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
+    <a class="project-row reveal" href="https://your-writeup-link.com" target="_blank">
+      <span class="proj-idx">05</span>
+      <span class="proj-title">John the Ripper — THM Lab</span>
+      <span class="proj-desc">Cracked hashed passwords using wordlists and rule-based attacks. Full writeup published.</span>
+      <div class="proj-tags"><span class="tag">TryHackMe</span><span class="tag">Offensive</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
+    <a class="project-row reveal" href="https://your-writeup-link.com" target="_blank">
+      <span class="proj-idx">06</span>
+      <span class="proj-title">MAC Spoofing & ICMP Analysis</span>
+      <span class="proj-desc">Simulated network-layer attacks and analyzed ICMP traffic in a controlled lab environment.</span>
+      <div class="proj-tags"><span class="tag">Networking</span><span class="tag">Wireshark</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
+    <!-- VANTYRON CONSULTING — replace # with your live URL when ready -->
+    <a class="project-row reveal" href="#" target="_blank">
+      <span class="proj-idx">07</span>
+      <span class="proj-title">Vantyron Consulting</span>
+      <span class="proj-desc">Founder & lead consultant. Technology and cybersecurity advisory firm — strategy, risk, and digital transformation for forward-thinking clients.</span>
+      <div class="proj-tags"><span class="tag">Founder</span><span class="tag">Consulting</span><span class="tag">Cybersecurity</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
+    <!-- VANTYRON STUDIO — replace # with your live URL when ready -->
+    <a class="project-row reveal" href="#" target="_blank">
+      <span class="proj-idx">08</span>
+      <span class="proj-title">Vantyron Studio</span>
+      <span class="proj-desc">Creative & multimedia production studio. Design, web, and digital media work built under the Vantyron brand.</span>
+      <div class="proj-tags"><span class="tag">Founder</span><span class="tag">Multimedia</span><span class="tag">Design</span></div>
+      <span class="proj-arrow">↗</span>
+    </a>
   </section>
 
-  <section id="certs" class="py-20 px-4 text-center">
-    <h2 class="section-title">Certifications & Labs</h2>
-    <ul class="list-none text-gray-200 text-lg space-y-2 max-w-2xl mx-auto">
-      <li>• TryHackMe — Hash cracking (JtR), Wireshark traffic analysis, MAC spoofing labs</li>
-      <li>• Preparing: Practical Junior Penetration Tester (PTJPT)</li>
-    </ul>
-  </section>
-
-  <section id="why" class="py-20 px-4 bg-gray-900 text-center text-[#F2F3AE]">
-    <h2 class="section-title">Why Hire Me?</h2>
-    <p class="section-text max-w-3xl">
-      I combine cybersecurity fundamentals with UI/UX to deliver products that are both secure and delightful.
-      I’m hands-on, curious, and I document my process — so teams can move fast without breaking trust.
-    </p>
-  </section>
-
-  <section id="contact" class="bg-gray-100/60 dark:bg-gray-800/60 py-16 px-4 text-center" data-aos="fade-left">
-    <h2 class="section-title">Contact Me</h2>
-    <form action="https://formspree.io/f/xanjrqdb" method="POST" class="form-glass max-w-xl mx-auto space-y-4" id="contactForm" novalidate>
-      <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded border" />
-      <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-3 rounded border"></textarea>
-      <input type="text" name="_gotcha" style="display:none" />
-      <button type="submit" class="btn-primary w-full">Send Message</button>
-      <div id="loadingSpinner" class="hidden text-center mt-4">
-        <svg class="animate-spin h-8 w-8 text-[#D58936] mx-auto" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" />
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-        </svg>
-        <p class="mt-2 text-[#A44200] font-semibold">Sending your message...</p>
+  <!-- Skills -->
+  <section id="skills">
+    <div class="sec-header reveal"><span class="sec-num">03</span><h2 class="sec-title">Skills</h2></div>
+    <div class="skills-cols">
+      <div class="skills-group reveal">
+        <h3>Web Development</h3>
+        <div class="skill-item"><span class="skill-name">HTML / CSS</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div></div></div>
+        <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Responsive Design</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div></div></div>
+        <div class="skill-item"><span class="skill-name">UI / UX Design</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Tailwind CSS</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div><div class="de"></div></div></div>
       </div>
-    </form>
-    <div class="mt-6 text-gray-700 dark:text-gray-300">
-      <p>Email: <a href="mailto:idrissafofana719@gmail.com" class="link">idrissafofana719@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/idrissa-fofana-09a444293" target="_blank" class="link" rel="noopener noreferrer">linkedin.com/in/idrissa-fofana-09a444293</a></p>
+      <div class="skills-group reveal">
+        <h3>Cybersecurity</h3>
+        <div class="skill-item"><span class="skill-name">Linux (Kali, Ubuntu)</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Wireshark</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div><div class="de"></div></div></div>
+        <div class="skill-item"><span class="skill-name">John the Ripper</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div><div class="de"></div></div></div>
+        <div class="skill-item"><span class="skill-name">AES Cryptography</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div></div></div>
+        <div class="skill-item"><span class="skill-name">VirtualBox / WSL</span><div class="skill-dots"><div class="df"></div><div class="df"></div><div class="df"></div><div class="df"></div><div class="de"></div></div></div>
+      </div>
     </div>
   </section>
 
-  <footer class="text-center p-4 text-sm bg-white/80 dark:bg-gray-900/80 text-gray-500">
-    &copy; 2025 Idrissa Fof. All rights reserved.
+  <!-- Contact -->
+  <section id="contact">
+    <div class="reveal">
+      <div class="sec-header"><span class="sec-num">04</span><h2 class="sec-title">Contact</h2></div>
+      <p class="contact-blurb">Whether you have a project in mind, a role to fill, or just want to talk shop about security or design — I'm open to the conversation.</p>
+      <div>
+        <a href="/cdn-cgi/l/email-protection#4f262b3d263c3c2e2920292e212e787e760f28222e2623612c2022" class="contact-link"><span class="__cf_email__" data-cfemail="3d54594f544e4e5c5b525b5c535c0a0c047d5a505c5451135e5250">[email&#160;protected]</span><span>EMAIL ↗</span></a>
+        <a href="https://www.linkedin.com/in/idrissa-fofana-09a444293" target="_blank" class="contact-link">linkedin.com/in/idrissa-fofana<span>LINKEDIN ↗</span></a>
+      </div>
+    </div>
+    <div class="reveal">
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xanjrqdb" method="POST">
+        <div class="form-field"><label>Your Email</label><input type="email" name="email" placeholder="hello@example.com" required></div>
+        <div class="form-field"><label>Message</label><textarea name="message" rows="6" placeholder="Tell me about your project or opportunity..." required></textarea></div>
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" class="btn-submit">Send Message →</button>
+        <div id="form-msg"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Idrissa Fofana. All rights reserved.</p>
+    <p>Web Developer & Cybersecurity Analyst</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+    });
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+    document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 70); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('form-msg');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('.btn-submit');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        msg.style.display = 'block';
+        if (res.ok) { msg.className = 'ok'; msg.textContent = "�
