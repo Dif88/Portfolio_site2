@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Encryptor | Caesar Cipher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+    }
+    textarea, input[type=number] {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+    .output-box {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      color: #f2f3ae;
+    }
+    .modal-bg {
+      background: rgba(0, 0, 0, 0.75);
+    }
+  </style>
+</head>
+<body class="bg-animated text-white min-h-screen flex flex-col items-center justify-center p-6">
+ <!-- Modal Trigger -->
+<button onclick="document.getElementById('encryptorModal').classList.remove('hidden')" class="neon-btn">🔐 Open Encryptor</button>
+
+<!-- Modal -->
+<div id="encryptorModal" class="fixed inset-0 modal-bg flex items-center justify-center z-50 hidden">
+  <div class="bg-gray-900 p-8 rounded-lg w-full max-w-2xl relative">
+    <button onclick="document.getElementById('encryptorModal').classList.add('hidden')" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
+    <h1 class="text-3xl font-bold mb-4">🔐 Caesar Cipher Encryptor</h1>
+    <p class="mb-4 text-gray-300">Encrypt or decrypt your messages using a classic Caesar cipher.</p>
+    <form id="encryptForm" class="space-y-4">
+      <textarea id="message" rows="4" class="w-full p-3 rounded" placeholder="Enter your message here..." required></textarea>
+      <input type="number" id="shift" class="w-full p-3 rounded" placeholder="Shift (e.g. 3)" min="1" required>
+      <div class="flex space-x-4">
+        <button type="submit" class="neon-btn flex-1">Encrypt Message</button>
+        <button type="button" id="decryptBtn" class="neon-btn flex-1">Decrypt Message</button>
+      </div>
+    </form>
+    <div id="output" class="output-box mt-6 hidden"></div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('encryptForm');
+const decryptBtn = document.getElementById('decryptBtn');
+const output = document.getElementById('output');
+
+function caesarCipher(str, shift, encrypt = true) {
+  const s = encrypt ? shift : (26 - shift);
+  return str.split('').map(char => {
+    const code = char.charCodeAt(0);
+    if (char >= 'a' && char <= 'z') {
+      return String.fromCharCode(((code - 97 + s) % 26) + 97);
+    } else if (char >= 'A' && char <= 'Z') {
+      return String.fromCharCode(((code - 65 + s) % 26) + 65);
+    } else {
+      return char;
+    }
+  }).join('');
+}
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const message = document.getElementById('message').value;
+  const shift = parseInt(document.getElementById('shift').value);
+  const encrypted = caesarCipher(message, shift, true);
+  output.classList.remove('hidden');
+  output.textContent = `🔒 Encrypted Message: ${encrypted}`;
+});
+
+decryptBtn.addEventListener('click', () => {
+  const message = document.getElementById('message').value;
+  const shift = parseInt(document.getElementById('shift').value);
+  const decrypted = caesarCipher(message, shift, false);
+  output.classList.remove('hidden');
+  output.textContent = `🔓 Decrypted Message: ${decrypted}`;
+});
+
+</script>
+</body>
+</html>
