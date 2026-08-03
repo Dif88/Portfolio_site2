@@ -85,6 +85,16 @@ decryptBtn.addEventListener('click', () => {
   output.textContent = `🔓 Decrypted Message: ${decrypted}`;
 });
 
+// Auto-open modal when page is loaded with #open hash
+if (window.location.hash === '#open' || window.location.hash === '#encryptor') {
+  const modal = document.getElementById('encryptorModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    const msgField = document.getElementById('message');
+    if (msgField) msgField.focus();
+  }
+}
+
 </script>
 </body>
 </html>
